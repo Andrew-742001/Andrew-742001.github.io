@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Htet Aung Shinn | AI & Data</title>
+  <meta name="description" content="Htet Aung Shinn — Data Science, Machine Learning and AI portfolio." />
+  <style>
+    :root {
+      --bg: #0b0d12;
+      --panel: #121621;
+      --panel2: #171c29;
+      --text: #f4f7fb;
+      --muted: #a9b2c3;
+      --line: #273043;
+      --accent: #7dd3fc;
+      --accent2: #a78bfa;
+      --max: 1080px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+      background: radial-gradient(circle at 80% 10%, rgba(125,211,252,.12), transparent 30%), var(--bg);
+      color: var(--text); line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(var(--max), 92%); margin: auto; }
+    nav {
+      position: sticky; top: 0; z-index: 10; backdrop-filter: blur(14px);
+      background: rgba(11,13,18,.78); border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    nav .wrap { height: 68px; display:flex; align-items:center; justify-content:space-between; }
+    .logo { font-weight: 800; letter-spacing: -.02em; }
+    .logo span { color: var(--accent); }
+    .links { display:flex; gap: 24px; color: var(--muted); font-size: .93rem; }
+    .links a:hover { color: var(--text); }
+    .hero { padding: 115px 0 90px; display:grid; grid-template-columns: 1.35fr .65fr; gap: 60px; align-items:center; }
+    .eyebrow { color: var(--accent); font-weight: 700; letter-spacing: .12em; text-transform: uppercase; font-size: .78rem; }
+    h1 { font-size: clamp(3rem, 8vw, 6.2rem); line-height: .95; letter-spacing: -.065em; margin: 16px 0 24px; }
+    h1 em { color: var(--accent2); font-style: normal; }
+    .hero p { color: var(--muted); max-width: 690px; font-size: 1.12rem; }
+    .buttons { display:flex; gap: 12px; flex-wrap:wrap; margin-top: 30px; }
+    .btn { padding: 12px 18px; border:1px solid var(--line); border-radius: 10px; background: var(--panel); font-weight:700; }
+    .btn.primary { background: var(--text); color: #0b0d12; border-color: var(--text); }
+    .btn:hover { transform: translateY(-1px); }
+    .terminal {
+      background: #090b10; border: 1px solid var(--line); border-radius: 16px; padding: 20px;
+      box-shadow: 0 25px 80px rgba(0,0,0,.35);
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .88rem;
+    }
+    .dots { display:flex; gap:6px; margin-bottom:18px; }
+    .dots i { width:9px; height:9px; border-radius:50%; background:#4b5563; display:block; }
+    .green { color:#86efac; } .blue { color:var(--accent); } .purple { color:var(--accent2); }
+    section { padding: 80px 0; border-top:1px solid rgba(255,255,255,.06); }
+    .section-head { margin-bottom: 34px; }
+    h2 { font-size: 2rem; letter-spacing: -.04em; margin: 0 0 8px; }
+    .section-head p { color:var(--muted); margin:0; }
+    .grid { display:grid; grid-template-columns: repeat(3,1fr); gap:16px; }
+    .card { background: linear-gradient(145deg, var(--panel), var(--panel2)); border:1px solid var(--line); border-radius:15px; padding:22px; }
+    .card h3 { margin: 8px 0 8px; }
+    .card p { color:var(--muted); margin:0; }
+    .tag { display:inline-block; border:1px solid var(--line); color:#cbd5e1; border-radius:999px; padding:4px 9px; font-size:.76rem; margin:4px 4px 0 0; }
+    .timeline { border-left: 1px solid var(--line); margin-left:8px; }
+    .role { padding: 0 0 34px 28px; position:relative; }
+    .role:before { content:""; position:absolute; width:10px; height:10px; border-radius:50%; background:var(--accent); left:-5px; top:7px; box-shadow:0 0 0 5px var(--bg); }
+    .role h3 { margin:0; } .role .date { color:var(--accent); font-size:.9rem; font-weight:700; }
+    .role p { color:var(--muted); max-width:800px; }
+    .skills { display:flex; flex-wrap:wrap; gap:9px; }
+    .skill { padding:10px 13px; background:var(--panel); border:1px solid var(--line); border-radius:9px; }
+    .project { min-height: 220px; display:flex; flex-direction:column; }
+    .project .bottom { margin-top:auto; padding-top:18px; }
+    .featured { grid-column: 1 / -1; display:grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items:center; }
+    .featured img { width:100%; border-radius:10px; background:#fff; display:block; }
+    .stats { display:flex; gap:28px; flex-wrap:wrap; margin:16px 0 4px; }
+    .stats b { display:block; font-size:1.5rem; color:var(--text); }
+    .stats span { color:var(--muted); font-size:.85rem; }
+    .project.next { border-style: dashed; }
+    .pipeline { display:grid; gap:8px; }
+    .pipeline div { display:flex; gap:12px; align-items:center; padding:10px 14px; background:#090b10; border:1px solid var(--line); border-radius:10px; color:var(--muted); font-size:.92rem; }
+    .pipeline b { color:var(--accent); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+    .contact { text-align:center; padding-bottom:100px; }
+    footer { color:var(--muted); border-top:1px solid rgba(255,255,255,.06); padding:25px 0 40px; font-size:.9rem; }
+    @media(max-width:800px) {
+      .hero { grid-template-columns:1fr; padding-top:75px; }
+      .grid { grid-template-columns:1fr; }
+      .featured { grid-template-columns:1fr; }
+      .links { display:none; }
+    }
+  </style>
+</head>
+<body>
+<nav>
+  <div class="wrap">
+    <a class="logo" href="#top">Htet <span>Aung Shinn</span></a>
+    <div class="links">
+      <a href="#about">About</a><a href="#experience">Experience</a><a href="#skills">Skills</a>
+      <a href="#projects">Projects</a><a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<main id="top">
+  <div class="wrap hero">
+    <div>
+      <div class="eyebrow">Data Science • Mathematics • Machine Learning</div>
+      <h1>Building toward<br><em>AI Engineering.</em></h1>
+      <p>
+        I'm Htet Aung Shinn, a Data Science and Mathematics student with hands-on experience
+        working on AI/data-center systems. I enjoy turning technical problems into
+        practical software, automation, and data-driven solutions.
+      </p>
+      <div class="buttons">
+        <a class="btn primary" href="#projects">View Projects</a>
+        <a class="btn" href="https://github.com/Andrew-742001" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="https://www.linkedin.com/in/andrew-htet-aung-shinn-0899ab241" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+    <div class="terminal">
+      <div class="dots"><i></i><i></i><i></i></div>
+      <div><span class="green">$</span> whoami</div>
+      <div>htet-aung-shinn</div><br>
+      <div><span class="green">$</span> focus</div>
+      <div class="blue">AI / ML / Data</div><br>
+      <div><span class="green">$</span> currently_learning</div>
+      <div class="purple">Machine Learning → Deep Learning → GenAI</div><br>
+      <div><span class="green">$</span> math</div>
+      <div class="blue">calculus · linear algebra · statistics</div><br>
+      <div><span class="green">$</span> build</div>
+      <div>data + models + useful software</div>
+    </div>
+  </div>
+
+  <section id="about">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>About Me</h2>
+        <p>A technical background that connects hardware, systems, data, and AI.</p>
+      </div>
+      <div class="grid">
+        <div class="card"><h3>Data Science &amp; Math</h3><p>Studying data science alongside mathematics: calculus, linear algebra, differential equations, and statistics, the foundations machine learning is built on.</p></div>
+        <div class="card"><h3>AI Infrastructure</h3><p>Hands-on experience working with AI/data-center server systems, Linux environments, diagnostics, and technical troubleshooting.</p></div>
+        <div class="card"><h3>Hands-on Builder</h3><p>Earlier electronics and automotive installation experience developed practical troubleshooting, wiring, component, and diagnostic skills.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Experience</h2>
+        <p>Real-world technical experience supporting my transition into AI and data.</p>
+      </div>
+      <div class="timeline">
+        <div class="role">
+          <div class="date">Sep 2024 — Present</div>
+          <h3>Test Repair Technician · Hyve Solutions</h3>
+          <p>
+            Work with high-performance server systems used in AI/data-center environments.
+            Use Linux and command-line tools through PuTTY to perform system checks,
+            diagnostics, troubleshooting, validation, and technical investigation.
+            Work with hardware and system-level issues while developing practical automation
+            and scripting skills.
+          </p>
+          <span class="tag">Linux</span><span class="tag">PuTTY</span><span class="tag">Server Diagnostics</span><span class="tag">AI Infrastructure</span>
+        </div>
+        <div class="role">
+          <div class="date">Jun 2023 — Aug 2024</div>
+          <h3>Car Audio &amp; Security Installer · Pacific Stereo</h3>
+          <p>
+            Installed and diagnosed alarms, speakers, infotainment systems, amplifiers,
+            and automotive audio systems. Worked hands-on with wiring and basic electronic
+            components including capacitors, diodes, and resistors.
+          </p>
+          <span class="tag">Electronics</span><span class="tag">Diagnostics</span><span class="tag">Wiring</span><span class="tag">Audio Systems</span>
+        </div>
+        <div class="role">
+          <div class="date">Nov 2021 — Nov 2022</div>
+          <h3>Data Analyst · Venue 36 Group of Companies</h3>
+          <p>
+            Cleaned and analyzed operational and sales data, built recurring reports and
+            dashboards to track company KPIs, and presented trends and recommendations
+            to management.
+          </p>
+          <span class="tag">Data Analysis</span><span class="tag">Reporting</span><span class="tag">Dashboards</span><span class="tag">Excel</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Technical Skills</h2>
+        <p>Current strengths and the AI stack I'm building toward.</p>
+      </div>
+      <div class="skills">
+        <div class="skill">Python</div><div class="skill">SQL</div><div class="skill">Java</div><div class="skill">C++</div><div class="skill">Pandas</div>
+        <div class="skill">NumPy</div><div class="skill">Data Analysis</div><div class="skill">Statistics</div>
+        <div class="skill">Machine Learning</div><div class="skill">Scikit-learn</div><div class="skill">Deep Learning</div>
+        <div class="skill">PyTorch</div><div class="skill">Generative AI</div><div class="skill">LLMs</div>
+        <div class="skill">Linux</div><div class="skill">Bash</div><div class="skill">Git/GitHub</div>
+        <div class="skill">Server Diagnostics</div><div class="skill">Hardware Troubleshooting</div>
+        <div class="skill">Calculus I–III</div><div class="skill">Linear Algebra</div><div class="skill">Differential Equations</div>
+        <div class="skill">Discrete Math</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>AI & Data Projects</h2>
+        <p>Things I've built, with the code on GitHub.</p>
+      </div>
+      <div class="grid">
+        <article class="card project featured">
+          <div>
+            <span class="tag">Machine Learning</span><span class="tag">Python</span><span class="tag">SQL</span><span class="tag">scikit-learn</span>
+            <h3>Car Price Prediction</h3>
+            <p>Predicts car prices from engine specs, size, and brand. I cleaned the raw data, explored pricing patterns with SQL in SQLite, engineered new features, and compared four regression models with cross-validation.</p>
+            <div class="stats">
+              <div><b>0.956</b><span>Test R²</span></div>
+              <div><b>$1,347</b><span>Average error</span></div>
+              <div><b>4</b><span>Models compared</span></div>
+            </div>
+            <div class="bottom"><a class="btn" href="https://github.com/Andrew-742001/car-price-prediction" target="_blank" rel="noopener">View on GitHub</a></div>
+          </div>
+          <img src="images/predicted_vs_actual.png" alt="Scatter plot of predicted versus actual car prices, with points close to the perfect-prediction line" loading="lazy" />
+        </article>
+        <article class="card project featured">
+          <div>
+            <span class="tag">NLP</span><span class="tag">Python</span><span class="tag">Streamlit</span><span class="tag">scikit-learn</span>
+            <h3>AI Resume Analyzer</h3>
+            <p>A web app that scores how well a resume matches a job description. Upload a PDF or Word resume, paste a job posting, and it pulls out technical skills, measures text similarity with TF-IDF and cosine similarity, lists missing skills, and suggests improvements.</p>
+            <div class="stats">
+              <div><b>60 / 40</b><span>Skill match / text similarity</span></div>
+              <div><b>PDF + DOCX</b><span>Resume formats</span></div>
+            </div>
+            <div class="bottom"><a class="btn" href="https://github.com/Andrew-742001/ai-resume-analyzer" target="_blank" rel="noopener">View on GitHub</a></div>
+          </div>
+          <div class="pipeline">
+            <div><b>1</b>Extract text from the resume</div>
+            <div><b>2</b>Detect skills in both documents</div>
+            <div><b>3</b>Compare required and found skills</div>
+            <div><b>4</b>Vectorize text with TF-IDF</div>
+            <div><b>5</b>Measure cosine similarity</div>
+            <div><b>6</b>Combine into one match score</div>
+          </div>
+        </article>
+        <article class="card project">
+          <div><span class="tag">C++</span><span class="tag">Computer Architecture</span><h3>IEEE 754 Calculator</h3><p>Shows how computers store decimal numbers as 32-bit floating point, breaking each value into its sign, exponent, and mantissa bits.</p></div>
+          <div class="bottom"><a class="btn" href="https://github.com/Andrew-742001/IEEE-754-Calculator" target="_blank" rel="noopener">View on GitHub</a></div>
+        </article>
+        <article class="card project">
+          <div><span class="tag">Bitwise Logic</span><span class="tag">Parsing</span><h3>RPN Bitwise Calculator</h3><p>A Reverse Polish Notation calculator that evaluates expressions with a stack and supports bitwise operations on integers.</p></div>
+          <div class="bottom"><a class="btn" href="https://github.com/Andrew-742001/RPN-Bitwise-Calculator" target="_blank" rel="noopener">View on GitHub</a></div>
+        </article>
+        <article class="card project next">
+          <div><span class="tag">Up next</span><h3>Deep Learning &amp; GenAI</h3><p>Next on my list: a PyTorch neural network and a retrieval-augmented LLM app, built alongside my IBM Machine Learning coursework.</p></div>
+          <div class="bottom"><a class="btn" href="https://github.com/Andrew-742001" target="_blank" rel="noopener">Follow on GitHub</a></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Education & Learning</h2>
+        <p>Focused on moving from Data Science foundations into modern AI engineering.</p>
+      </div>
+      <div class="grid">
+        <div class="card"><h3>Evergreen Valley College</h3><p>Data Science and Mathematics, San Jose, CA. Coursework in Calculus I–III, linear algebra, differential equations, discrete math, and computer science. Transferring to a university in Fall 2027.</p></div>
+        <div class="card"><h3>University of Technology (Yatanarpon Cyber City)</h3><p>Engineering and technology studies in Pyin Oo Lwin, Myanmar, 2017–2020.</p></div>
+        <div class="card"><h3>Next Credential</h3><p>IBM Machine Learning Professional Certificate — planned/current learning path.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Let's Connect</h2>
+        <p>Open to connecting around AI, data science, machine learning, and technology.</p>
+      </div>
+      <div class="buttons" style="justify-content:center">
+        <a class="btn primary" href="mailto:andrew742001@gmail.com">Email Me</a>
+        <a class="btn" href="https://github.com/Andrew-742001" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="https://www.linkedin.com/in/andrew-htet-aung-shinn-0899ab241" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">© 2026 Htet Aung Shinn · AI & Data Portfolio</div>
+</footer>
+</body>
+</html>
